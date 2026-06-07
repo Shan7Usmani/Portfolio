@@ -1,6 +1,5 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import emailjs from '@emailjs/browser'
 import './Contact.css'
 
 const fadeUp = {
@@ -11,7 +10,6 @@ const fadeUp = {
 }
 
 export default function Contact() {
-  const formRef = useRef()
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
   const [sending, setSending] = useState(false)
@@ -20,25 +18,25 @@ export default function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!form.name || !form.email || !form.message) return
     setSending(true)
 
-    emailjs.sendForm(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      formRef.current,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-    )
-      .then(() => {
-        setSubmitted(true)
-        setSending(false)
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       })
-      .catch(() => {
-        alert('Failed to send. Check your EmailJS config in .env')
-        setSending(false)
-      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.error)
+      setSubmitted(true)
+    } catch {
+      alert('Failed to send. Make sure the backend server is running.')
+    } finally {
+      setSending(false)
+    }
   }
 
   return (
@@ -96,7 +94,7 @@ export default function Contact() {
                 </button>
               </motion.div>
             ) : (
-              <form className="contact-form" ref={formRef} onSubmit={handleSubmit}>
+              <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="contact-form__group">
                   <label className="contact-form__label">Name</label>
                   <input
