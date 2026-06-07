@@ -149,8 +149,12 @@
   .activity-graph__cell,
   .activity-graph__month {
     width: 11px;
+    height: 11px;
   }
   .activity-graph__week {
+    gap: 2px;
+  }
+  .activity-graph__months {
     gap: 2px;
   }
   .activity-graph__labels-y {
@@ -181,6 +185,16 @@
   .activity-graph__cell,
   .activity-graph__month {
     width: 9px;
+    height: 9px;
+  }
+  .activity-graph__months {
+    gap: 2px;
+  }
+  .activity-graph__grid {
+    gap: 2px;
+  }
+  .activity-graph__week {
+    gap: 2px;
   }
   .activity-graph-wrap {
     padding: 14px 10px;
