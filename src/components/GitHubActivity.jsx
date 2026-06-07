@@ -22,7 +22,7 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
 
   if (error) return null
 
-  const allDays = data?.contributions || []
+  const allDays = (data?.contributions || []).filter((d) => new Date(d.date) <= new Date())
   const total = data?.totalContributions || allDays.reduce((s, d) => s + d.count, 0)
   const maxCount = Math.max(...allDays.map((d) => d.count), 1)
 
