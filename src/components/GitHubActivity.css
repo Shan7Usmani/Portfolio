@@ -1,0 +1,138 @@
+.activity-section {
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.activity-graph-wrap {
+  margin-top: 40px;
+  padding: 32px 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  position: relative;
+  transition: var(--transition);
+}
+
+.activity-graph-wrap:hover {
+  border-color: rgba(0, 240, 255, 0.15);
+}
+
+.activity-graph {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.activity-graph::-webkit-scrollbar {
+  height: 4px;
+}
+
+.activity-graph::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.activity-graph__labels-y {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 0;
+  min-width: 30px;
+}
+
+.activity-graph__day-label {
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  height: 13px;
+  display: flex;
+  align-items: center;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.activity-graph__grid {
+  display: flex;
+  gap: 3px;
+}
+
+.activity-graph__week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.activity-graph__cell {
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.activity-graph__cell:hover {
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+  border-radius: 3px;
+}
+
+.activity-graph__footer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.activity-graph__legend-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: 'Orbitron', sans-serif;
+}
+
+.activity-graph__legend-cell {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.activity-graph__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: var(--radius);
+  box-shadow: inset 0 0 60px rgba(0, 240, 255, 0.02);
+}
+
+@media (max-width: 600px) {
+  .activity-graph-wrap {
+    padding: 20px 14px;
+    margin-top: 28px;
+  }
+  .activity-graph__cell {
+    width: 11px;
+    height: 11px;
+  }
+  .activity-graph {
+    gap: 4px;
+  }
+  .activity-graph__week {
+    gap: 2px;
+  }
+  .activity-graph__labels-y {
+    min-width: 22px;
+  }
+  .activity-graph__day-label {
+    font-size: 0.5rem;
+    height: 11px;
+  }
+}
+
+@media (max-width: 380px) {
+  .activity-graph__cell {
+    width: 9px;
+    height: 9px;
+  }
+  .activity-graph-wrap {
+    padding: 14px 10px;
+  }
+}

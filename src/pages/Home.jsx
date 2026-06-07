@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import GitHubActivity from '../components/GitHubActivity'
 import './Home.css'
 
 const skills = [
@@ -191,6 +192,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <GitHubActivity username="Shan7Usmani" />
 
       <section className="section featured-section">
         <div className="container">
