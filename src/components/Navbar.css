@@ -141,11 +141,24 @@
   color: var(--accent-cyan);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .navbar__links {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
   .navbar__links {
     display: none;
   }
   .navbar__hamburger {
     display: flex;
+  }
+  .navbar__mobile {
+    padding: 16px;
+  }
+  .navbar__mobile-link {
+    padding: 12px 14px;
+    font-size: 0.9rem;
   }
 }

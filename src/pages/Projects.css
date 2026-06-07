@@ -150,14 +150,43 @@
 @media (max-width: 1024px) {
   .projects-page__grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .project-card__gradient {
+    height: 90px;
   }
 }
 
 @media (max-width: 600px) {
+  .projects-page {
+    padding-top: 100px;
+  }
+  .projects-page__filters {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .projects-page__filter {
+    padding: 8px 16px;
+    font-size: 0.65rem;
+  }
   .projects-page__grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
-  .projects-page {
-    padding-top: 120px;
+  .project-card__gradient {
+    height: 80px;
+  }
+  .project-card__content {
+    padding: 18px;
+  }
+  .project-card__title {
+    font-size: 1rem;
+  }
+  .project-card__desc {
+    font-size: 0.8rem;
+  }
+  .project-card__links {
+    flex-direction: column;
+    gap: 8px;
   }
 }
