@@ -18,8 +18,6 @@
 }
 
 .activity-graph {
-  display: flex;
-  gap: 6px;
   overflow-x: auto;
   padding-bottom: 4px;
 }
@@ -33,11 +31,40 @@
   border-radius: 2px;
 }
 
+.activity-graph__header {
+  display: flex;
+  gap: 6px;
+  height: 20px;
+}
+
+.activity-graph__header-spacer {
+  min-width: 30px;
+}
+
+.activity-graph__header-labels {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-graph__header-label {
+  position: absolute;
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  font-family: 'Orbitron', sans-serif;
+  white-space: nowrap;
+  top: 0;
+}
+
+.activity-graph__body {
+  display: flex;
+  gap: 6px;
+}
+
 .activity-graph__labels-y {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  padding-top: 0;
   min-width: 30px;
 }
 
@@ -65,7 +92,7 @@
   width: 13px;
   height: 13px;
   border-radius: 2px;
-  transition: var(--transition);
+  transition: all 0.15s ease;
   cursor: pointer;
 }
 
@@ -112,9 +139,6 @@
     width: 11px;
     height: 11px;
   }
-  .activity-graph {
-    gap: 4px;
-  }
   .activity-graph__week {
     gap: 2px;
   }
@@ -124,6 +148,22 @@
   .activity-graph__day-label {
     font-size: 0.5rem;
     height: 11px;
+  }
+  .activity-graph__header-spacer {
+    min-width: 22px;
+  }
+  .activity-graph__header {
+    height: 16px;
+    gap: 4px;
+  }
+  .activity-graph__header-label {
+    font-size: 0.5rem;
+  }
+  .activity-graph__body {
+    gap: 4px;
+  }
+  .activity-graph__grid {
+    gap: 2px;
   }
 }
 

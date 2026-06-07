@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import './GitHubActivity.css'
 
@@ -6,6 +6,7 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 const DAYS = ['', 'Mon', '', 'Wed', '', 'Fri', '']
 
 export default function GitHubActivity({ username = 'Shan7Usmani' }) {
+  const gridRef = useRef(null)
   const [data, setData] = useState(null)
   const [error, setError] = useState(false)
 
@@ -21,10 +22,9 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
 
   if (error) return null
 
-  const weeks = data?.contributions || []
-  const total = data?.totalContributions || weeks.reduce((s, d) => s + d.count, 0)
-
-  const maxCount = Math.max(...weeks.map((d) => d.count), 1)
+  const allDays = data?.contributions || []
+  const total = data?.totalContributions || allDays.reduce((s, d) => s + d.count, 0)
+  const maxCount = Math.max(...allDays.map((d) => d.count), 1)
 
   const getIntensity = (count) => {
     if (count === 0) return 0
@@ -47,9 +47,24 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
   }
 
   const chunkWeeks = []
-  for (let i = 0; i < weeks.length; i += 7) {
-    chunkWeeks.push(weeks.slice(i, i + 7))
+  for (let i = 0; i < allDays.length; i += 7) {
+    chunkWeeks.push(allDays.slice(i, i + 7))
   }
+  chunkWeeks.reverse()
+
+  const CELL = 13
+  const GAP = 3
+  const step = CELL + GAP
+
+  const monthLabels = []
+  let last = -1
+  chunkWeeks.forEach((week, wi) => {
+    const m = new Date(week[0]?.date).getMonth()
+    if (m !== last) {
+      monthLabels.push({ label: MONTHS[m], left: wi * step })
+      last = m
+    }
+  })
 
   return (
     <motion.section
@@ -68,27 +83,43 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
 
         <div className="activity-graph-wrap">
           <div className="activity-graph">
-            <div className="activity-graph__labels-y">
-              {DAYS.map((d) => (
-                <span key={d} className="activity-graph__day-label">{d}</span>
-              ))}
+            <div className="activity-graph__header">
+              <div className="activity-graph__header-spacer" />
+              <div className="activity-graph__header-labels">
+                {monthLabels.map((m) => (
+                  <span
+                    key={m.label + m.left}
+                    className="activity-graph__header-label"
+                    style={{ left: `${m.left}px` }}
+                  >
+                    {m.label}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="activity-graph__grid">
-              {chunkWeeks.map((week, wi) => (
-                <div key={wi} className="activity-graph__week">
-                  {week.map((day, di) => {
-                    const intensity = getIntensity(day.count)
-                    return (
-                      <div
-                        key={di}
-                        className="activity-graph__cell"
-                        style={{ background: getColor(intensity) }}
-                        title={`${day.date}: ${day.count} contributions`}
-                      />
-                    )
-                  })}
-                </div>
-              ))}
+            <div className="activity-graph__body" ref={gridRef}>
+              <div className="activity-graph__labels-y">
+                {DAYS.map((d) => (
+                  <span key={d} className="activity-graph__day-label">{d}</span>
+                ))}
+              </div>
+              <div className="activity-graph__grid">
+                {chunkWeeks.map((week, wi) => (
+                  <div key={wi} className="activity-graph__week">
+                    {week.map((day, di) => {
+                      const intensity = getIntensity(day.count)
+                      return (
+                        <div
+                          key={di}
+                          className="activity-graph__cell"
+                          style={{ background: getColor(intensity) }}
+                          title={`${day.date}: ${day.count} contributions`}
+                        />
+                      )
+                    })}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
