@@ -50,21 +50,26 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
   for (let i = 0; i < allDays.length; i += 7) {
     chunkWeeks.push(allDays.slice(i, i + 7))
   }
-  chunkWeeks.reverse()
+
+  useEffect(() => {
+    if (data && gridRef.current) {
+      gridRef.current.scrollLeft = gridRef.current.scrollWidth
+    }
+  }, [data])
 
   const CELL = 13
   const GAP = 3
   const step = CELL + GAP
 
-  const monthLabels = []
   let last = -1
-  chunkWeeks.forEach((week, wi) => {
+  const monthLabels = chunkWeeks.map((week, wi) => {
     const m = new Date(week[0]?.date).getMonth()
     if (m !== last) {
-      monthLabels.push({ label: MONTHS[m], left: wi * step })
       last = m
+      return { label: MONTHS[m], left: wi * step }
     }
-  })
+    return null
+  }).filter(Boolean)
 
   return (
     <motion.section
@@ -78,11 +83,11 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
         <span className="section-label">Live Activity</span>
         <h2 className="section-title">GitHub Contributions</h2>
         <p className="section-subtitle">
-          {total} contributions in the last year
+          {total} contributions in the last year — <span className="activity-section__hint">scroll left for older</span>
         </p>
 
         <div className="activity-graph-wrap">
-          <div className="activity-graph">
+          <div className="activity-graph" ref={gridRef}>
             <div className="activity-graph__header">
               <div className="activity-graph__header-spacer" />
               <div className="activity-graph__header-labels">
@@ -97,7 +102,7 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
                 ))}
               </div>
             </div>
-            <div className="activity-graph__body" ref={gridRef}>
+            <div className="activity-graph__body">
               <div className="activity-graph__labels-y">
                 {DAYS.map((d) => (
                   <span key={d} className="activity-graph__day-label">{d}</span>
