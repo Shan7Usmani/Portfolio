@@ -54,6 +54,16 @@
   line-height: 1.6;
 }
 
+.contact-info-card__link {
+  color: var(--accent-cyan);
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.contact-info-card__link:hover {
+  text-shadow: var(--glow-cyan);
+}
+
 .contact-page__form-wrap {
   border: 1px solid var(--border);
   border-radius: var(--radius);

@@ -30,7 +30,7 @@ export default function Navbar() {
       <div className="navbar__inner container">
         <Link to="/" className="navbar__logo">
           <span className="navbar__logo-icon">&lt;/&gt;</span>
-          <span className="navbar__logo-text">Termina<span className="navbar__logo-accent">AI</span></span>
+          <span className="navbar__logo-text">Takhi<span className="navbar__logo-accent">ro7</span></span>
         </Link>
 
         <ul className="navbar__links">

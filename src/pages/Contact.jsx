@@ -52,7 +52,7 @@ export default function Contact() {
           <span className="section-label">Get in Touch</span>
           <h1 className="section-title">Contact</h1>
           <p className="section-subtitle">
-            Have a project in mind or just want to say hello? We'd love to hear from you.
+            Have a project in mind or just want to say hello? I'd love to hear from you.
           </p>
         </motion.div>
 
@@ -62,18 +62,18 @@ export default function Contact() {
           <motion.div className="contact-page__info" {...fadeUp}>
             <div className="contact-info-card">
               <span className="contact-info-card__icon">📍</span>
-              <h3>Our Location</h3>
-              <p>San Francisco, CA<br />United States</p>
+              <h3>Location</h3>
+              <p>India</p>
+            </div>
+            <div className="contact-info-card">
+              <span className="contact-info-card__icon">🐙</span>
+              <h3>GitHub</h3>
+              <a href="https://github.com/Shan7Usmani" target="_blank" rel="noreferrer" className="contact-info-card__link">github.com/Shan7Usmani</a>
             </div>
             <div className="contact-info-card">
               <span className="contact-info-card__icon">📧</span>
-              <h3>Email Us</h3>
-              <p>hello@terminaai.io</p>
-            </div>
-            <div className="contact-info-card">
-              <span className="contact-info-card__icon">📱</span>
-              <h3>Phone</h3>
-              <p>+1 (555) 000-0000</p>
+              <h3>Email</h3>
+              <p>Reach out via form</p>
             </div>
           </motion.div>
 

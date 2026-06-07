@@ -43,12 +43,18 @@
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-card);
+  transition: var(--transition);
+}
+
+.story-stat:hover {
+  border-color: rgba(0, 240, 255, 0.15);
+  transform: translateY(-4px);
 }
 
 .story-stat__value {
   display: block;
   font-family: 'Orbitron', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
   -webkit-background-clip: text;
@@ -62,14 +68,13 @@
   color: var(--text-secondary);
 }
 
-.about-page__values {
-  margin-bottom: 100px;
-}
-
-.about-page__values-title,
-.about-page__team-title {
+.about-page__section-title {
   font-size: 1.8rem;
   margin-bottom: 40px;
+}
+
+.about-page__values {
+  margin-bottom: 100px;
 }
 
 .values-grid {
@@ -111,51 +116,37 @@
   line-height: 1.7;
 }
 
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.team-card {
+.about-page__connect {
   text-align: center;
-  padding: 32px 16px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-card);
-  transition: var(--transition);
+  padding: 60px 0;
+  border-top: 1px solid var(--border);
 }
 
-.team-card:hover {
-  border-color: rgba(0, 240, 255, 0.15);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-}
-
-.team-card__avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-  font-family: 'Orbitron', sans-serif;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #fff;
-}
-
-.team-card__name {
+.about-page__connect-text {
+  color: var(--text-secondary);
   font-size: 1rem;
-  margin-bottom: 6px;
+  margin-bottom: 36px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
 }
 
-.team-card__role {
-  font-size: 0.8rem;
-  color: var(--accent-cyan);
-  font-family: 'Orbitron', sans-serif;
-  letter-spacing: 1px;
+.about-page__connect-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-page__connect-links .btn-secondary {
+  min-width: 140px;
+  justify-content: center;
+}
+
+.about-page__connect-links .btn-primary {
+  min-width: 140px;
+  justify-content: center;
 }
 
 @media (max-width: 1024px) {
@@ -163,15 +154,13 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .values-grid,
-  .team-grid {
+  .values-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
-  .values-grid,
-  .team-grid {
+  .values-grid {
     grid-template-columns: 1fr;
   }
   .about-page__story-stats {

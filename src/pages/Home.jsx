@@ -3,11 +3,22 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import './Home.css'
 
-const stats = [
-  { value: '50+', label: 'Projects Delivered' },
-  { value: '30+', label: 'Team Members' },
-  { value: '99%', label: 'Client Satisfaction' },
-  { value: '5+', label: 'Years Experience' },
+const skills = [
+  { name: 'React', level: 90 },
+  { name: 'JavaScript', level: 88 },
+  { name: 'TypeScript', level: 75 },
+  { name: 'MongoDB', level: 80 },
+  { name: 'Java', level: 72 },
+  { name: 'Python', level: 78 },
+  { name: 'HTML/CSS', level: 92 },
+  { name: 'Tailwind', level: 82 },
+]
+
+const features = [
+  { icon: '⚛️', title: 'Frontend Development', desc: 'Building responsive, performant UIs with React, TypeScript, and modern CSS.' },
+  { icon: '🧩', title: 'Full Stack Apps', desc: 'MERN stack applications with authentication, APIs, and real-time features.' },
+  { icon: '🎨', title: 'Clean Design', desc: 'Pixel-perfect interfaces with attention to detail and smooth animations.' },
+  { icon: '📚', title: 'Always Learning', desc: 'BTech + IITM BS student passionate about open source and new technologies.' },
 ]
 
 const fadeUp = {
@@ -33,11 +44,11 @@ export default function Home() {
     resize()
     window.addEventListener('resize', resize)
 
-    const particles = Array.from({ length: 80 }, () => ({
+    const particles = Array.from({ length: 60 }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
       r: Math.random() * 2 + 0.5,
       a: Math.random() * 0.5 + 0.1,
     }))
@@ -64,7 +75,7 @@ export default function Home() {
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
             ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `rgba(0, 240, 255, ${0.08 * (1 - dist / 150)})`
+            ctx.strokeStyle = `rgba(0, 240, 255, ${0.06 * (1 - dist / 150)})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
@@ -92,18 +103,17 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="hero__text"
           >
-            <span className="hero__badge">Pioneering the Future</span>
+            <span className="hero__badge">Full Stack Developer</span>
             <h1 className="hero__title">
-              Where Innovation<br />
-              Meets <span className="hero__accent">Intelligence</span>
+              Hi, I'm <span className="hero__accent">Shan Usmani</span>
             </h1>
             <p className="hero__desc">
-              We craft cutting-edge AI solutions and digital experiences that redefine
-              what's possible. Welcome to the next generation of technology.
+              BTech + IITM BS student passionate about building clean, modern web
+              applications. I love turning ideas into reality with code.
             </p>
             <div className="hero__actions">
               <Link to="/projects" className="btn btn-primary">
-                Explore Our Work
+                View My Work
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -124,17 +134,18 @@ export default function Home() {
               <span className="code-panel__dot code-panel__dot--red" />
               <span className="code-panel__dot code-panel__dot--yellow" />
               <span className="code-panel__dot code-panel__dot--green" />
-              <span className="code-panel__title">terminal.ai</span>
+              <span className="code-panel__title">takhiro7</span>
             </div>
             <div className="code-panel__body">
-              <span className="code-panel__line"><span className="code-comment">// init core system</span></span>
-              <span className="code-panel__line"><span className="code-key">const</span> ai = <span className="code-fn">new</span> <span className="code-class">NeuralCore</span>()</span>
-              <span className="code-panel__line"><span className="code-key">const</span> result = <span className="code-key">await</span> ai.<span className="code-fn">process</span>({'{'}</span>
-              <span className="code-panel__line">  input: <span className="code-str">"human_language"</span>,</span>
-              <span className="code-panel__line">  depth: <span className="code-num">Infinity</span>,</span>
-              <span className="code-panel__line">{'}'})</span>
-              <span className="code-panel__line code-blinking"><span className="code-class">TerminaAI</span>.<span className="code-fn">ready</span>()</span>
-              <span className="code-panel__line code-blinking" style={{ '--i': 1 }}><span className="code-comment">// &gt; system online_</span></span>
+              <span className="code-panel__line"><span className="code-comment">// about me</span></span>
+              <span className="code-panel__line"><span className="code-key">const</span> developer = <span className="code-fn">{'{'}</span></span>
+              <span className="code-panel__line">  name: <span className="code-str">"Shan Usmani"</span>,</span>
+              <span className="code-panel__line">  title: <span className="code-str">"Full Stack Developer"</span>,</span>
+              <span className="code-panel__line">  location: <span className="code-str">"India"</span>,</span>
+              <span className="code-panel__line">  education: <span className="code-str">"BTech + IITM BS"</span>,</span>
+              <span className="code-panel__line">  stack: [<span className="code-str">"React"</span>, <span className="code-str">"Node"</span>, <span className="code-str">"MongoDB"</span>]</span>
+              <span className="code-panel__line"><span className="code-fn">{'}'}</span></span>
+              <span className="code-panel__line code-blinking"><span className="code-class">developer</span>.<span className="code-fn">build</span>()</span>
             </div>
           </motion.div>
         </div>
@@ -145,18 +156,36 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section stats-section">
+      <section className="section skills-section">
         <div className="container">
-          <div className="stats-grid">
-            {stats.map((s, i) => (
+          <motion.div {...fadeUp}>
+            <span className="section-label">My Skills</span>
+            <h2 className="section-title">Tech Stack</h2>
+            <p className="section-subtitle">
+              Technologies I work with daily to build modern web applications.
+            </p>
+          </motion.div>
+          <div className="skills-grid">
+            {skills.map((s, i) => (
               <motion.div
-                key={s.label}
-                className="stat-card"
+                key={s.name}
+                className="skill-card"
                 {...fadeUp}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.06 }}
               >
-                <span className="stat-value">{s.value}</span>
-                <span className="stat-label">{s.label}</span>
+                <div className="skill-card__info">
+                  <span className="skill-card__name">{s.name}</span>
+                  <span className="skill-card__level">{s.level}%</span>
+                </div>
+                <div className="skill-card__bar">
+                  <motion.div
+                    className="skill-card__fill"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${s.level}%` }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, delay: 0.3 + i * 0.06 }}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
@@ -166,20 +195,15 @@ export default function Home() {
       <section className="section featured-section">
         <div className="container">
           <motion.div {...fadeUp}>
-            <span className="section-label">What We Do</span>
-            <h2 className="section-title">Built for the Future</h2>
+            <span className="section-label">What I Do</span>
+            <h2 className="section-title">Building the Web</h2>
             <p className="section-subtitle">
-              From neural networks to immersive interfaces, we build technology that
-              pushes boundaries and sets new standards.
+              From responsive frontends to full-stack applications, I craft digital
+              experiences that make an impact.
             </p>
           </motion.div>
           <div className="features-grid">
-            {[
-              { icon: '🧠', title: 'AI & Machine Learning', desc: 'Advanced neural networks and deep learning models tailored to your needs.' },
-              { icon: '⚡', title: 'High-Performance Systems', desc: 'Optimized architectures built for speed, scale, and reliability.' },
-              { icon: '🎨', title: 'Immersive Interfaces', desc: 'Next-gen UIs with fluid animations and cutting-edge design.' },
-              { icon: '🔐', title: 'Enterprise Security', desc: 'Military-grade protection for your most sensitive data.' },
-            ].map((f, i) => (
+            {features.map((f, i) => (
               <motion.div
                 key={f.title}
                 className="feature-card"

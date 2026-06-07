@@ -116,6 +116,23 @@
   font-family: 'Fira Code', 'Consolas', monospace;
 }
 
+.project-card__links {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.project-card__link {
+  font-size: 0.8rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.project-card__link:hover {
+  text-shadow: var(--glow-cyan);
+}
+
 .project-card__glow {
   position: absolute;
   inset: 0;
