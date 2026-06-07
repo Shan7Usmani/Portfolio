@@ -20,6 +20,12 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
       .catch(() => setError(true))
   }, [username])
 
+  useEffect(() => {
+    if (data && gridRef.current) {
+      gridRef.current.scrollLeft = gridRef.current.scrollWidth
+    }
+  }, [data])
+
   if (error) return null
 
   const allDays = (data?.contributions || []).filter((d) => new Date(d.date) <= new Date())
@@ -51,25 +57,13 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
     chunkWeeks.push(allDays.slice(i, i + 7))
   }
 
-  useEffect(() => {
-    if (data && gridRef.current) {
-      gridRef.current.scrollLeft = gridRef.current.scrollWidth
-    }
-  }, [data])
-
-  const CELL = 13
-  const GAP = 3
-  const step = CELL + GAP
-
-  let last = -1
-  const monthLabels = chunkWeeks.map((week, wi) => {
+  let prevMonth = -1
+  const monthRows = chunkWeeks.map((week) => {
     const m = new Date(week[0]?.date).getMonth()
-    if (m !== last) {
-      last = m
-      return { label: MONTHS[m], left: wi * step }
-    }
-    return null
-  }).filter(Boolean)
+    const show = m !== prevMonth
+    prevMonth = m
+    return show ? MONTHS[m] : ''
+  })
 
   return (
     <motion.section
@@ -88,21 +82,17 @@ export default function GitHubActivity({ username = 'Shan7Usmani' }) {
 
         <div className="activity-graph-wrap">
           <div className="activity-graph" ref={gridRef}>
-            <div className="activity-graph__header">
-              <div className="activity-graph__header-spacer" />
-              <div className="activity-graph__header-labels">
-                {monthLabels.map((m) => (
-                  <span
-                    key={m.label + m.left}
-                    className="activity-graph__header-label"
-                    style={{ left: `${m.left}px` }}
-                  >
-                    {m.label}
+            <div className="activity-graph__row activity-graph__row--months">
+              <span className="activity-graph__spacer" />
+              <div className="activity-graph__months">
+                {monthRows.map((label, i) => (
+                  <span key={i} className={`activity-graph__month ${label ? '' : 'activity-graph__month--empty'}`}>
+                    {label}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="activity-graph__body">
+            <div className="activity-graph__row activity-graph__row--grid">
               <div className="activity-graph__labels-y">
                 {DAYS.map((d) => (
                   <span key={d} className="activity-graph__day-label">{d}</span>

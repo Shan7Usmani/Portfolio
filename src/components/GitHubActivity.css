@@ -3,6 +3,11 @@
   overflow: hidden;
 }
 
+.activity-section__hint {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
 .activity-graph-wrap {
   margin-top: 40px;
   padding: 32px 24px;
@@ -31,34 +36,38 @@
   border-radius: 2px;
 }
 
-.activity-graph__header {
+.activity-graph__row {
   display: flex;
   gap: 6px;
-  height: 20px;
+  align-items: flex-end;
+  min-width: fit-content;
 }
 
-.activity-graph__header-spacer {
+.activity-graph__spacer {
   min-width: 30px;
+  flex-shrink: 0;
 }
 
-.activity-graph__header-labels {
-  position: relative;
-  flex: 1;
-  min-width: 0;
+.activity-graph__row--months {
+  height: 18px;
+  margin-bottom: 4px;
 }
 
-.activity-graph__header-label {
-  position: absolute;
+.activity-graph__months {
+  display: flex;
+  gap: 3px;
+}
+
+.activity-graph__month {
+  width: 13px;
   font-size: 0.6rem;
   color: var(--text-muted);
   font-family: 'Orbitron', sans-serif;
-  white-space: nowrap;
-  top: 0;
+  flex-shrink: 0;
 }
 
-.activity-graph__body {
-  display: flex;
-  gap: 6px;
+.activity-graph__row--grid {
+  align-items: stretch;
 }
 
 .activity-graph__labels-y {
@@ -66,6 +75,7 @@
   flex-direction: column;
   gap: 3px;
   min-width: 30px;
+  flex-shrink: 0;
 }
 
 .activity-graph__day-label {
@@ -94,6 +104,7 @@
   border-radius: 2px;
   transition: all 0.15s ease;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .activity-graph__cell:hover {
@@ -135,9 +146,9 @@
     padding: 20px 14px;
     margin-top: 28px;
   }
-  .activity-graph__cell {
+  .activity-graph__cell,
+  .activity-graph__month {
     width: 11px;
-    height: 11px;
   }
   .activity-graph__week {
     gap: 2px;
@@ -149,28 +160,27 @@
     font-size: 0.5rem;
     height: 11px;
   }
-  .activity-graph__header-spacer {
+  .activity-graph__spacer {
     min-width: 22px;
   }
-  .activity-graph__header {
-    height: 16px;
-    gap: 4px;
-  }
-  .activity-graph__header-label {
+  .activity-graph__month {
     font-size: 0.5rem;
   }
-  .activity-graph__body {
+  .activity-graph__row {
     gap: 4px;
   }
   .activity-graph__grid {
     gap: 2px;
   }
+  .activity-graph__row--months {
+    height: 16px;
+  }
 }
 
 @media (max-width: 380px) {
-  .activity-graph__cell {
+  .activity-graph__cell,
+  .activity-graph__month {
     width: 9px;
-    height: 9px;
   }
   .activity-graph-wrap {
     padding: 14px 10px;
