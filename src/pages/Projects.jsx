@@ -5,6 +5,16 @@ import './Projects.css'
 const projects = [
   {
     id: 1,
+    title: 'PlacementOS',
+    category: 'SaaS',
+    desc: 'AI-powered placement preparation platform built with Next.js, featuring resume analysis, mock interviews, and personalized roadmaps to crack campus placements.',
+    tags: ['Next.js', 'TypeScript', 'Supabase', 'AI'],
+    link: 'https://github.com/Shan7Usmani/SaaS',
+    live: 'https://placementos-gold.vercel.app',
+    gradient: 'linear-gradient(135deg, #7b2ff7, #00f0ff)',
+  },
+  {
+    id: 2,
     title: 'CSE26',
     category: 'Frontend',
     desc: 'Personal portfolio site featuring an Alibaba clone, SaaS landing page, e-commerce layout, and themed UI projects — all built with pure HTML, CSS, and JavaScript.',
@@ -14,7 +24,7 @@ const projects = [
     gradient: 'linear-gradient(135deg, #00f0ff, #0066ff)',
   },
   {
-    id: 2,
+    id: 3,
     title: 'CSE24_JS',
     category: 'JavaScript',
     desc: 'A collection of JavaScript projects and exercises demonstrating core JS concepts, DOM manipulation, API integration, and Java-based coursework.',
@@ -23,7 +33,7 @@ const projects = [
     gradient: 'linear-gradient(135deg, #7b2ff7, #00f0ff)',
   },
   {
-    id: 3,
+    id: 4,
     title: 'DailyForge',
     category: 'Full Stack',
     desc: 'Open-source fullstack MERN productivity app with drag-and-drop scheduling, a smart task library, and overlap protection — deployed on Render.',
@@ -33,7 +43,7 @@ const projects = [
     gradient: 'linear-gradient(135deg, #00ff41, #0066ff)',
   },
   {
-    id: 4,
+    id: 5,
     title: 'sahidawa-india',
     category: 'Open Source',
     desc: 'Platform to verify medicines, find trusted pharmacies, and report suspicious drugs — designed for low-bandwidth environments with multilingual support across India.',
@@ -43,7 +53,7 @@ const projects = [
     gradient: 'linear-gradient(135deg, #ff0055, #7b2ff7)',
   },
   {
-    id: 5,
+    id: 6,
     title: 'kerno',
     category: 'Systems',
     desc: 'System-level incident diagnosis engine that explains production issues across Linux, Kubernetes, VMs, and bare metal using eBPF — Apache 2.0 licensed.',
@@ -52,7 +62,7 @@ const projects = [
     gradient: 'linear-gradient(135deg, #ff6b00, #ff0055)',
   },
   {
-    id: 6,
+    id: 7,
     title: 'TermUI',
     category: 'TypeScript',
     desc: 'TypeScript/JavaScript framework for building terminal apps with flexbox layout, JSX, hooks, global state, theming, animations, and hot reload — no native dependencies.',
