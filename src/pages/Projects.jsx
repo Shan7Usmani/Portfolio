@@ -1,9 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './Projects.css'
 
-const screenshot = (url) =>
-  url ? `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false` : null
+function Screenshot({ url, gradient }) {
+  const [img, setImg] = useState(null)
+
+  useEffect(() => {
+    if (!url) return
+    fetch(`https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false`)
+      .then((r) => r.json())
+      .then((res) => {
+        if (res?.data?.screenshot?.url) setImg(res.data.screenshot.url)
+      })
+      .catch(() => {})
+  }, [url])
+
+  return (
+    <div className="project-card__preview">
+      {img ? (
+        <img src={img} alt="" loading="lazy" />
+      ) : (
+        <div className="project-card__gradient" style={{ background: gradient }} />
+      )}
+      <div className="project-card__preview-overlay" style={{ background: gradient }} />
+    </div>
+  )
+}
 
 const projects = [
   {
@@ -130,18 +152,7 @@ export default function Projects() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 className="project-card"
               >
-                {project.live ? (
-                  <div className="project-card__preview">
-                    <img
-                      src={screenshot(project.live)}
-                      alt={`${project.title} preview`}
-                      loading="lazy"
-                    />
-                    <div className="project-card__preview-overlay" style={{ background: project.gradient }} />
-                  </div>
-                ) : (
-                  <div className="project-card__gradient" style={{ background: project.gradient }} />
-                )}
+                <Screenshot url={project.live} gradient={project.gradient} />
                 <div className="project-card__content">
                   <span className="project-card__category">{project.category}</span>
                   <h3 className="project-card__title">{project.title}</h3>

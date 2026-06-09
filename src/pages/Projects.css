@@ -67,7 +67,7 @@
 }
 
 .project-card__gradient {
-  height: 120px;
+  height: 140px;
   opacity: 0.15;
 }
 
@@ -85,10 +85,19 @@
   object-position: top;
   transition: transform 0.4s ease;
   opacity: 0.7;
+  display: block;
 }
 
 .project-card:hover .project-card__preview img {
   transform: scale(1.08);
+}
+
+.project-card__preview .project-card__gradient {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.3;
 }
 
 .project-card__preview-overlay {
@@ -180,7 +189,7 @@
     gap: 20px;
   }
   .project-card__gradient {
-    height: 90px;
+    height: 110px;
   }
   .project-card__preview {
     height: 110px;
@@ -203,9 +212,7 @@
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  .project-card__gradient {
-    height: 80px;
-  }
+  .project-card__gradient,
   .project-card__preview {
     height: 90px;
   }
