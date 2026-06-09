@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './Projects.css'
 
+const screenshot = (url) =>
+  url ? `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false` : null
+
 const projects = [
   {
     id: 1,
@@ -127,7 +130,18 @@ export default function Projects() {
                 transition={{ duration: 0.4, delay: i * 0.05 }}
                 className="project-card"
               >
-                <div className="project-card__gradient" style={{ background: project.gradient }} />
+                {project.live ? (
+                  <div className="project-card__preview">
+                    <img
+                      src={screenshot(project.live)}
+                      alt={`${project.title} preview`}
+                      loading="lazy"
+                    />
+                    <div className="project-card__preview-overlay" style={{ background: project.gradient }} />
+                  </div>
+                ) : (
+                  <div className="project-card__gradient" style={{ background: project.gradient }} />
+                )}
                 <div className="project-card__content">
                   <span className="project-card__category">{project.category}</span>
                   <h3 className="project-card__title">{project.title}</h3>
