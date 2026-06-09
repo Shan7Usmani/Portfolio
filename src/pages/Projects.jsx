@@ -10,7 +10,7 @@ const projects = [
     desc: 'AI-powered placement preparation platform built with Next.js, featuring resume analysis, mock interviews, and personalized roadmaps to crack campus placements.',
     tags: ['Next.js', 'TypeScript', 'Supabase', 'AI'],
     link: 'https://github.com/Shan7Usmani/SaaS',
-    live: 'https://placementos-gold.vercel.app',
+    live: 'https://placementos-five.vercel.app/',
     gradient: 'linear-gradient(135deg, #7b2ff7, #00f0ff)',
   },
   {
