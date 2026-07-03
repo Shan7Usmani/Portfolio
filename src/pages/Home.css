@@ -282,6 +282,15 @@
   }
 }
 
+.glow-pulse {
+  animation: glowPulse 3s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { text-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
+  50% { text-shadow: 0 0 50px rgba(0, 240, 255, 0.8), 0 0 100px rgba(0, 240, 255, 0.2); }
+}
+
 @media (max-width: 600px) {
   .hero__content {
     gap: 28px;
@@ -306,16 +315,7 @@
     white-space: pre-wrap;
     word-break: break-all;
   }
-.glow-pulse {
-  animation: glowPulse 3s ease-in-out infinite;
-}
-
-@keyframes glowPulse {
-  0%, 100% { text-shadow: 0 0 20px rgba(0, 240, 255, 0.3); }
-  50% { text-shadow: 0 0 50px rgba(0, 240, 255, 0.8), 0 0 100px rgba(0, 240, 255, 0.2); }
-}
-
-.hero__scroll {
+  .hero__scroll {
     display: none;
   }
   .hero__actions {

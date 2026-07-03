@@ -198,6 +198,10 @@ img {
   transform: translateY(-2px);
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -241,5 +245,18 @@ img {
   }
   .container {
     padding: 0 16px;
+  }
+}
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  .container {
+    padding-left: max(24px, env(safe-area-inset-left));
+    padding-right: max(24px, env(safe-area-inset-right));
+  }
+  @media (max-width: 600px) {
+    .container {
+      padding-left: max(16px, env(safe-area-inset-left));
+      padding-right: max(16px, env(safe-area-inset-right));
+    }
   }
 }

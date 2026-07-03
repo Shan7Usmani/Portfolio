@@ -235,3 +235,26 @@
     gap: 8px;
   }
 }
+
+@media (max-width: 380px) {
+  .projects-page {
+    padding-top: 80px;
+  }
+  .projects-page__filters {
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+  .projects-page__filter {
+    padding: 6px 12px;
+    font-size: 0.6rem;
+  }
+  .project-card__content {
+    padding: 14px;
+  }
+  .project-card__title {
+    font-size: 0.9rem;
+  }
+  .project-card__desc {
+    font-size: 0.75rem;
+  }
+}

@@ -222,3 +222,25 @@
     font-size: 0.9rem;
   }
 }
+
+@media (max-width: 380px) {
+  .contact-page {
+    padding-top: 80px;
+  }
+  .contact-page__form-wrap {
+    padding: 16px;
+  }
+  .contact-form__input {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+  .contact-form__label {
+    font-size: 0.7rem;
+  }
+  .contact-info-card {
+    padding: 16px;
+  }
+  .contact-info-card p {
+    font-size: 0.8rem;
+  }
+}

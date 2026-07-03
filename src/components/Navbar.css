@@ -117,6 +117,9 @@
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 24px;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .navbar__mobile-links {
@@ -160,5 +163,24 @@
   .navbar__mobile-link {
     padding: 12px 14px;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar {
+    padding: 14px 0;
+  }
+  .navbar--scrolled {
+    padding: 10px 0;
+  }
+  .navbar__logo {
+    font-size: 1.1rem;
+  }
+  .navbar__mobile {
+    padding: 12px;
+  }
+  .navbar__mobile-link {
+    padding: 10px 12px;
+    font-size: 0.85rem;
   }
 }

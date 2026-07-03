@@ -228,7 +228,28 @@
 }
 
 @media (max-width: 380px) {
+  .about-page {
+    padding-top: 80px;
+  }
   .about-page__story-stats {
     grid-template-columns: 1fr;
+  }
+  .about-page__story-text h2 {
+    font-size: 1.2rem;
+  }
+  .about-page__story-text p {
+    font-size: 0.8rem;
+  }
+  .value-card {
+    padding: 20px 16px;
+  }
+  .value-card__number {
+    font-size: 1.8rem;
+  }
+  .value-card__title {
+    font-size: 0.85rem;
+  }
+  .about-page__connect-text {
+    font-size: 0.85rem;
   }
 }
