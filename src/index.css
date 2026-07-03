@@ -233,12 +233,6 @@ img {
   }
 }
 
-@media (max-width: 768px) {
-  .spline-wrapper {
-    display: none;
-  }
-}
-
 @media (max-width: 600px) {
   .section {
     padding: 60px 0;
