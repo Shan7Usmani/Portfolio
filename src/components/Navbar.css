@@ -144,9 +144,18 @@
   color: var(--accent-cyan);
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .navbar__links {
     gap: 20px;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .navbar__links {
+    display: none;
+  }
+  .navbar__hamburger {
+    display: flex;
   }
 }
 

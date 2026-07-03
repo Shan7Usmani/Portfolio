@@ -260,7 +260,7 @@
   line-height: 1.7;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .hero__content {
     grid-template-columns: 1fr;
     gap: 40px;

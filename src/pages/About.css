@@ -158,7 +158,7 @@
   justify-content: center;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
   .about-page__story {
     grid-template-columns: 1fr;
     gap: 40px;
