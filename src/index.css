@@ -11,8 +11,8 @@
   --bg-card-hover: #1a1a1a;
   --border: #1e1e1e;
   --text-primary: #ffffff;
-  --text-secondary: #888888;
-  --text-muted: #555555;
+  --text-secondary: #c0c0c0;
+  --text-muted: #999999;
   --accent-cyan: #00f0ff;
   --accent-purple: #7b2ff7;
   --accent-green: #00ff41;
@@ -22,6 +22,48 @@
   --glow-green: 0 0 20px rgba(0, 255, 65, 0.3);
   --radius: 12px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.app-bg__overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 0%, var(--bg-primary) 80%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.spline-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.spline-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+a, button, .btn,
+input, textarea, select,
+[role="button"],
+.project-card,
+.skill-card,
+.feature-card,
+.value-card,
+.story-stat,
+.contact-info-card,
+.hero__code-panel,
+.code-panel__line,
+.hero__scroll,
+.activity-graph__cell,
+.activity-section {
+  pointer-events: auto;
 }
 
 html {
@@ -78,6 +120,7 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
 }
 
 .section-label::before {
@@ -91,10 +134,11 @@ img {
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 16px;
-  background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #c0c0c0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
 }
 
 .section-subtitle {
@@ -102,6 +146,7 @@ img {
   color: var(--text-secondary);
   max-width: 600px;
   line-height: 1.8;
+  text-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .glow-line {

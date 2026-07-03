@@ -1,6 +1,7 @@
 .about-page {
   padding-top: 160px;
   min-height: 100vh;
+  background: rgba(5, 5, 5, 0.4);
 }
 
 .about-page__glow-line {
@@ -28,6 +29,7 @@
   line-height: 1.9;
   margin-bottom: 16px;
   font-size: 0.95rem;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .about-page__story-stats {
@@ -40,9 +42,10 @@
 .story-stat {
   text-align: center;
   padding: 28px 16px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(30, 30, 30, 0.3);
   border-radius: var(--radius);
-  background: var(--bg-card);
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(8px);
   transition: var(--transition);
 }
 
@@ -66,11 +69,13 @@
 .story-stat__label {
   font-size: 0.8rem;
   color: var(--text-secondary);
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .about-page__section-title {
   font-size: 1.8rem;
   margin-bottom: 40px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .about-page__values {
@@ -85,9 +90,10 @@
 
 .value-card {
   padding: 32px 24px;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(30, 30, 30, 0.3);
   border-radius: var(--radius);
-  background: var(--bg-card);
+  background: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(8px);
   transition: var(--transition);
 }
 
@@ -108,18 +114,20 @@
 .value-card__title {
   font-size: 0.95rem;
   margin-bottom: 10px;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .value-card__desc {
   font-size: 0.82rem;
   color: var(--text-secondary);
   line-height: 1.7;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
 .about-page__connect {
   text-align: center;
   padding: 60px 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(30, 30, 30, 0.3);
 }
 
 .about-page__connect-text {
@@ -130,6 +138,7 @@
   margin-left: auto;
   margin-right: auto;
   line-height: 1.8;
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .about-page__connect-links {

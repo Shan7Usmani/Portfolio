@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import GitHubActivity from '../components/GitHubActivity'
+import MagneticButton from '../components/MagneticButton'
 import './Home.css'
 
 const skills = [
@@ -29,74 +29,24 @@ const fadeUp = {
   transition: { duration: 0.6 },
 }
 
+const staggerContainer = {
+  initial: {},
+  whileInView: { transition: { staggerChildren: 0.08 } },
+  viewport: { once: true },
+}
+
+const staggerItem = {
+  initial: { opacity: 0, y: 40 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5 },
+}
+
 export default function Home() {
-  const canvasRef = useRef(null)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    let animId
-
-    const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
-    const particles = Array.from({ length: 60 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      r: Math.random() * 2 + 0.5,
-      a: Math.random() * 0.5 + 0.1,
-    }))
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      particles.forEach((p) => {
-        p.x += p.vx
-        p.y += p.vy
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(0, 240, 255, ${p.a})`
-        ctx.fill()
-      })
-      particles.forEach((a, i) => {
-        for (let j = i + 1; j < particles.length; j++) {
-          const b = particles[j]
-          const dx = a.x - b.x
-          const dy = a.y - b.y
-          const dist = Math.sqrt(dx * dx + dy * dy)
-          if (dist < 150) {
-            ctx.beginPath()
-            ctx.moveTo(a.x, a.y)
-            ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `rgba(0, 240, 255, ${0.06 * (1 - dist / 150)})`
-            ctx.lineWidth = 0.5
-            ctx.stroke()
-          }
-        }
-      })
-      animId = requestAnimationFrame(draw)
-    }
-    draw()
-
-    return () => {
-      cancelAnimationFrame(animId)
-      window.removeEventListener('resize', resize)
-    }
-  }, [])
-
   return (
     <>
+      <div className="home-content">
       <section className="hero">
-        <canvas ref={canvasRef} className="hero__canvas" />
-        <div className="hero__overlay" />
         <div className="hero__content container">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -106,22 +56,26 @@ export default function Home() {
           >
             <span className="hero__badge">Full Stack Developer</span>
             <h1 className="hero__title">
-              Hi, I'm <span className="hero__accent">Shan Usmani</span>
+              Hi, I'm <span className="hero__accent glow-pulse">Shan Usmani</span>
             </h1>
             <p className="hero__desc">
               BTech + IITM BS student passionate about building clean, modern web
               applications. I love turning ideas into reality with code.
             </p>
             <div className="hero__actions">
-              <Link to="/projects" className="btn btn-primary">
-                View My Work
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-              <Link to="/contact" className="btn btn-secondary">
-                Get in Touch
-              </Link>
+              <MagneticButton>
+                <Link to="/projects" className="btn btn-primary">
+                  View My Work
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </MagneticButton>
+              <MagneticButton>
+                <Link to="/contact" className="btn btn-secondary">
+                  Get in Touch
+                </Link>
+              </MagneticButton>
             </div>
           </motion.div>
 
@@ -166,13 +120,12 @@ export default function Home() {
               Technologies I work with daily to build modern web applications.
             </p>
           </motion.div>
-          <div className="skills-grid">
+          <motion.div className="skills-grid" {...staggerContainer}>
             {skills.map((s, i) => (
               <motion.div
                 key={s.name}
                 className="skill-card"
-                {...fadeUp}
-                transition={{ duration: 0.5, delay: i * 0.06 }}
+                {...staggerItem}
               >
                 <div className="skill-card__info">
                   <span className="skill-card__name">{s.name}</span>
@@ -189,7 +142,7 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -205,22 +158,22 @@ export default function Home() {
               experiences that make an impact.
             </p>
           </motion.div>
-          <div className="features-grid">
+          <motion.div className="features-grid" {...staggerContainer}>
             {features.map((f, i) => (
               <motion.div
                 key={f.title}
                 className="feature-card"
-                {...fadeUp}
-                transition={{ duration: 0.6, delay: i * 0.12 }}
+                {...staggerItem}
               >
                 <span className="feature-icon">{f.icon}</span>
                 <h3 className="feature-title">{f.title}</h3>
                 <p className="feature-desc">{f.desc}</p>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
+      </div>
     </>
   )
 }
