@@ -28,6 +28,24 @@
   position: fixed;
   inset: 0;
   z-index: 0;
+  background: var(--bg-primary);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .app-bg {
+    background:
+      radial-gradient(ellipse 100% 60% at 30% 30%, rgba(0, 240, 255, 0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 60% at 70% 70%, rgba(123, 47, 247, 0.05) 0%, transparent 60%),
+      var(--bg-primary);
+    background-size: 200% 200%;
+    animation: bgDrift 12s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes bgDrift {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 100%; }
 }
 
 .app-bg__overlay {
@@ -267,6 +285,12 @@ img {
   }
   .section-title {
     font-size: 2rem;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .spline-wrapper {
+    display: none;
   }
 }
 
