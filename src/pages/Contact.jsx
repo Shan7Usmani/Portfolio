@@ -35,8 +35,8 @@ export default function Contact() {
       const data = await res.json()
       if (!data.success) throw new Error(data.message)
       setSubmitted(true)
-    } catch {
-      alert('Failed to send. Please try again later.')
+    } catch (err) {
+      alert('Failed to send: ' + err.message)
     } finally {
       setSending(false)
     }
