@@ -48,15 +48,42 @@
   position: absolute;
   inset: 0;
   z-index: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0, 240, 255, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 70% 60%, rgba(123, 47, 247, 0.04) 0%, transparent 50%),
-    var(--bg-primary);
 }
 
 .spline-wrapper canvas {
   width: 100% !important;
   height: 100% !important;
+}
+
+.spline-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.spline-loader__ring {
+  width: 48px;
+  height: 48px;
+  border: 2px solid rgba(0, 240, 255, 0.1);
+  border-top-color: var(--accent-cyan);
+  border-radius: 50%;
+  animation: splineSpin 0.8s linear infinite;
+}
+
+@keyframes splineSpin {
+  to { transform: rotate(360deg); }
+}
+
+.spline-loader__text {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 a, button, .btn,
