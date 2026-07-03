@@ -24,16 +24,19 @@ export default function Contact() {
     setSending(true)
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          ...form,
+        }),
       })
       const data = await res.json()
-      if (!data.success) throw new Error(data.error)
+      if (!data.success) throw new Error(data.message)
       setSubmitted(true)
     } catch {
-      alert('Failed to send. Make sure the backend server is running.')
+      alert('Failed to send. Please try again later.')
     } finally {
       setSending(false)
     }
